@@ -14,8 +14,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 ## 路径配置
 All paths use absolute paths.
 ```
-embedding_model_path = "/your_embedding/e5-base-v2"
-corpus_path = "/corpus/general_knowledge.jsonl"
+embedding_model_path = "/xxx/e5-base-v2"
+corpus_path = "/xxx/corpus/general_knowledge.jsonl"
 ```
 
 ## 读取语料库
@@ -67,7 +67,7 @@ for doc in result:
 ## 使用本地模型
 All paths use absolute paths.
 ```
-local_model_path = "/Llama-2-7b-chat-hf"
+local_model_path = "/xxx/Llama-2-7b-chat-hf"
 tokenizer = AutoTokenizer.from_pretrained(local_model_path)
 
 # 设置填充 token
