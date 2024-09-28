@@ -1,6 +1,7 @@
 # SimplestRAG
 
 ## 导入相关库
+使用Chroma作为向量数据库
 ```
 import os
 import json
