@@ -1,5 +1,7 @@
 # SimplestRAG
 
+只涉及模型的Inference，不涉及预训练
+
 ## 导入相关库
 使用Chroma作为向量数据库
 ```
