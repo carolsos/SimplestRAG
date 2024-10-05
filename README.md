@@ -2,6 +2,8 @@
 
 只涉及模型的Inference，不涉及预训练
 
+以下模型和数据，默认在CPU上运行，如果想转移到GPU，得使用torch（用KIMI or 豆包查一下）
+
 ## 使用Langchain、embedding、chroma版（比较新的东西）
 
 ### 导入相关库
@@ -16,7 +18,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 ```
 
 ### 路径配置
-All paths use absolute paths.
+使用绝对路径
 ```
 embedding_model_path = "/xxx/e5-base-v2"
 corpus_path = "/xxx/corpus/general_knowledge.jsonl"
@@ -69,7 +71,7 @@ for doc in result:
 ```
 
 ### 使用本地模型
-All paths use absolute paths.
+使用绝对路径
 ```
 local_model_path = "/xxx/Llama-2-7b-chat-hf"
 tokenizer = AutoTokenizer.from_pretrained(local_model_path)
