@@ -8,7 +8,7 @@
 
 ### 导入相关库
 使用Chroma作为向量数据库
-```
+```python
 import os
 import json
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -19,13 +19,13 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ### 路径配置
 使用绝对路径
-```
+```python
 embedding_model_path = "/xxx/e5-base-v2"
 corpus_path = "/xxx/corpus/general_knowledge.jsonl"
 ```
 
 ### 读取语料库
-```
+```python
 def read_jsonl(file_path):
     docs = []
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -42,29 +42,29 @@ docs = read_jsonl(corpus_path)
 ```
 
 ### 文本分割
-```
+```python
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=64)
 documents = text_splitter.split_documents(docs)  # docs 已经是字符串列表
 ```
 
 ### 嵌入模型
-```
+```python
 embedding_model = HuggingFaceBgeEmbeddings(model_name=embedding_model_path)
 ```
 
 ### 构建向量数据库
-```
+```python
 vectorstore = Chroma.from_documents(documents, embedding_model, persist_directory="./vectorstore")
 ```
 
 ### 查询
-```
+```python
 query = "Who was the first winner of the Nobel Prize?"
 result = vectorstore.similarity_search(query, k=3)
 ```
 
 ### 打印检索出来的 context
-```
+```python
 for doc in result:
     print(doc.page_content)
     print("********")
@@ -72,7 +72,7 @@ for doc in result:
 
 ### 使用本地模型
 使用绝对路径
-```
+```python
 local_model_path = "/xxx/Llama-2-7b-chat-hf"
 tokenizer = AutoTokenizer.from_pretrained(local_model_path)
 
@@ -110,7 +110,7 @@ print("LLM 输出结果：", llm_response)
 ```
 
 ### 完整版代码
-```
+```python
 import os
 import json
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -195,7 +195,7 @@ print("LLM 输出结果：", llm_response)
 
 ## 传统nlp版，使用TF-IDF和cosine_similarity
 
-```
+```python
 import os
 import json
 from transformers import AutoTokenizer, AutoModelForCausalLM
